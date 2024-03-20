@@ -23,6 +23,7 @@ builder.Services
         options.Retry.Delay = httpResilienceOptions.RetryDelay;
         options.AttemptTimeout.Timeout = httpResilienceOptions.AttemptTimeout;
         options.TotalRequestTimeout.Timeout = httpResilienceOptions.TotalRequestTimeout;
+        options.CircuitBreaker.SamplingDuration = httpResilienceOptions.CircuitBreakerSamplingDuration;
     });
 
 builder.Services.AddProblemDetails();

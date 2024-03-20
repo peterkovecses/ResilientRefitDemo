@@ -6,4 +6,5 @@ public class HttpResilienceOptions
     public TimeSpan RetryDelay { get; set; }
     public TimeSpan AttemptTimeout { get; set; }
     public TimeSpan TotalRequestTimeout { get; set; }
+    public TimeSpan CircuitBreakerSamplingDuration { get; set; }
 }
