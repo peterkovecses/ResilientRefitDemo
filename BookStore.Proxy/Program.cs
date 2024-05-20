@@ -16,7 +16,12 @@ var httpResilienceOptions = builder.Configuration.GetSection(ConfigKeys.HttpResi
 
 builder.Services
     .AddRefitClient<IBookStoreApiClient>()
-    .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://localhost:7235/"))
+    .ConfigureHttpClient(client =>
+    {
+        client.BaseAddress = new Uri("https://localhost:7235/");
+        client.Timeout = httpResilienceOptions.HttpClientTimeout;
+    })
+        
     .AddStandardResilienceHandler(options =>
     {
         options.Retry.MaxRetryAttempts = httpResilienceOptions.MaxRetryAttempts;
